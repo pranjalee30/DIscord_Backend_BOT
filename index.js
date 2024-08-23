@@ -1,4 +1,5 @@
 const {Client,GatewayIntentBits} =require("discord.js");
+const app =require("express");
 require('dotenv').config();
 
 const client = new Client({ 
@@ -6,6 +7,12 @@ const client = new Client({
 });
 
 const token = process.env.TOKEN;
+app.get('/', (req, res) => {
+    res.send('Welcome to the DISCORD BOT');
+  });
+
+
+
 client.on("messageCreate",(message)=>{
     if(message.author.bot) return;
     if(message.content.startsWith('create')){
